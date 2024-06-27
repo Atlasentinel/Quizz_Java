@@ -24,9 +24,9 @@ public class UtilisateurController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Utilisateur> get(@PathVariable int id) {
+    public ResponseEntity<Utilisateur> get(@PathVariable int _id) {
 
-        Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(id);
+        Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(_id);
 
         if(optionalUtilisateur.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,39 +36,39 @@ public class UtilisateurController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Utilisateur> add(@RequestBody @Valid Utilisateur utilisateur) {
-        utilisateur.setId(null);
-        utilisateurDao.save(utilisateur);
-        return new ResponseEntity<>(utilisateur, HttpStatus.CREATED);
+    public ResponseEntity<Utilisateur> add(@RequestBody @Valid Utilisateur _utilisateur) {
+        _utilisateur.setId(null);
+        utilisateurDao.save(_utilisateur);
+        return new ResponseEntity<>(_utilisateur, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Utilisateur> update(
-            @PathVariable int id,
-            @RequestBody @Valid Utilisateur utilisateur) {
-        utilisateur.setId(id);
+            @PathVariable int _id,
+            @RequestBody @Valid Utilisateur _utilisateur) {
+        _utilisateur.setId(_id);
 
-        Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(id);
+        Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(_id);
 
         if(optionalUtilisateur.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        utilisateurDao.save(utilisateur);
+        utilisateurDao.save(_utilisateur);
 
-        return new ResponseEntity<>(utilisateur, HttpStatus.OK);
+        return new ResponseEntity<>(_utilisateur, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Utilisateur> delete(@PathVariable int id) {
+    public ResponseEntity<Utilisateur> delete(@PathVariable int _id) {
 
-        Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(id);
+        Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(_id);
 
         if(optionalUtilisateur.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        utilisateurDao.deleteById(id);
+        utilisateurDao.deleteById(_id);
 
         return new ResponseEntity<>(optionalUtilisateur.get(), HttpStatus.OK);
     }

@@ -22,6 +22,25 @@ INSERT INTO categorie_quizz (quizz_id, categorie_id) VALUES
 (2, 2),
 (2, 4);
 
+-- Insertion de nouvelles questions
 INSERT INTO question (texte, quizz_id) VALUES
-("Comment s'appelle le 1er pokemon de sacha", 1),
-("Combien y a t-il de pokemon dans la première génération", 1);
+("Quel est le type de Pikachu?", 1),
+("Quel est le Pokémon légendaire de la version Bleu?", 1);
+
+-- Insertion de nouvelles réponses possibles
+INSERT INTO reponse_possible (texte, bonne_reponse, question_id) VALUES
+("Électrique", true, 1),
+("Feu", false, 1),
+("Eau", false, 1),
+("Vol", false, 1),
+("Artikodin", true, 2),
+("Électhor", false, 2),
+("Sulfura", false, 2),
+("Mewtwo", false, 2);
+
+-- Mise à jour des réponses des utilisateurs
+INSERT INTO reponse_utilisateur (utilisateur_id, reponse_possible_id) VALUES
+(1, 1),
+(1, 5),
+(2, 3),
+(2, 6);
